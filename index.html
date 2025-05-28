@@ -1,182 +1,473 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Nullcloak – AI Agents. On Demand. At Scale.</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet"/>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Orbitron', sans-serif;
-      background-color: #0e0e0e;
-      color: #e0e0e0;
-    }
-
-    header {
-      background-color: #101820;
-      padding: 60px 20px 40px;
-      text-align: center;
-      border-bottom: 3px solid #00fff7;
-    }
-
-    .logo {
-      width: 100px;
-      animation: pulse 4s ease-in-out infinite, spin 20s linear infinite;
-      margin-bottom: 20px;
-    }
-
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-    }
-
-    @keyframes spin {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-
-    h1 {
-      font-size: 3em;
-      color: #00fff7;
-      margin-bottom: 10px;
-    }
-
-    p.slogan {
-      font-size: 1.2em;
-      color: #aaa;
-    }
-
-    section {
-      max-width: 900px;
-      margin: 50px auto;
-      padding: 0 20px;
-    }
-
-    .about {
-      text-align: center;
-      margin-bottom: 50px;
-    }
-
-    .about h2 {
-      color: #00fff7;
-    }
-
-    .about p {
-      font-size: 1.1em;
-      color: #ccc;
-      max-width: 700px;
-      margin: auto;
-    }
-
-    .pricing {
-      display: flex;
-      gap: 20px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .plan {
-      background-color: #1a1a1a;
-      border: 2px solid #00fff7;
-      border-radius: 10px;
-      padding: 30px;
-      width: 250px;
-      text-align: center;
-    }
-
-    .plan h2 {
-      color: #00fff7;
-      margin-bottom: 10px;
-    }
-
-    .plan p {
-      font-size: 14px;
-      margin-bottom: 20px;
-    }
-
-    .plan .price {
-      font-size: 1.5em;
-      margin-bottom: 10px;
-      color: #fff;
-    }
-
-    .waitlist {
-      text-align: center;
-      margin-top: 60px;
-    }
-
-    input[type="email"] {
-      padding: 10px;
-      width: 300px;
-      border-radius: 5px;
-      border: none;
-      margin-right: 10px;
-      font-family: 'Orbitron', sans-serif;
-    }
-
-    button {
-      background-color: #00fff7;
-      border: none;
-      padding: 10px 20px;
-      font-family: 'Orbitron', sans-serif;
-      border-radius: 5px;
-      cursor: pointer;
-      color: #000;
-    }
-
-    footer {
-      text-align: center;
-      margin-top: 100px;
-      font-size: 0.9em;
-      color: #666;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nullcloak - AI Marketing Agents That Work While You Sleep</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #e2e8f0;
+            background: #0f172a;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            box-shadow: 0 2px 20px rgba(6, 214, 160, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(6, 214, 160, 0.2);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #06d6a0;
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            margin-right: 12px;
+            background: linear-gradient(135deg, #06d6a0, #40e0d0);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .logo-icon::before {
+            content: '';
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>')
+        }
+        
+        .cta-button {
+            background: linear-gradient(135deg, #f97316, #ea580c);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+            padding: 120px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: radial-gradient(circle at 25% 25%, rgba(6, 214, 160, 0.1) 0%, transparent 50%),
+                              radial-gradient(circle at 75% 75%, rgba(64, 224, 208, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: #06d6a0;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+        
+        .hero .tagline {
+            font-size: 1.3rem;
+            color: #40e0d0;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            color: #cbd5e1;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .hero-cta {
+            display: inline-block;
+            background: linear-gradient(135deg, #06d6a0, #40e0d0);
+            color: white;
+            padding: 16px 32px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .hero-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(6, 214, 160, 0.3);
+        }
+        
+        /* Features */
+        .features {
+            padding: 80px 0;
+            background: #1e293b;
+        }
+        
+        .features h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #06d6a0;
+            margin-bottom: 3rem;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .feature-card {
+            background: rgba(30, 41, 59, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid #40e0d0;
+            border: 1px solid rgba(6, 214, 160, 0.2);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(6, 214, 160, 0.2);
+        }
+        
+        .feature-card h3 {
+            color: #06d6a0;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-card p {
+            color: #cbd5e1;
+        }
+        
+        /* Pricing */
+        .pricing {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+            text-align: center;
+            position: relative;
+        }
+        
+        .pricing::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: radial-gradient(circle at 75% 25%, rgba(64, 224, 208, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        .pricing h2 {
+            font-size: 2.5rem;
+            color: #06d6a0;
+            margin-bottom: 1rem;
+        }
+        
+        .pricing-card {
+            background: rgba(30, 41, 59, 0.9);
+            backdrop-filter: blur(15px);
+            max-width: 400px;
+            margin: 2rem auto;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(64, 224, 208, 0.3);
+        }
+        
+        .price {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #06d6a0;
+            margin-bottom: 0.5rem;
+        }
+        
+        .price-period {
+            color: #cbd5e1;
+            margin-bottom: 1.5rem;
+        }
+        
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+        
+        .pricing-features li {
+            padding: 0.5rem 0;
+            color: #cbd5e1;
+        }
+        
+        .pricing-features li:before {
+            content: "✓";
+            color: #40e0d0;
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+        
+        /* Waitlist */
+        .waitlist {
+            padding: 80px 0;
+            background: #1e293b;
+            text-align: center;
+        }
+        
+        .waitlist h2 {
+            font-size: 2.5rem;
+            color: #06d6a0;
+            margin-bottom: 1rem;
+        }
+        
+        .waitlist p {
+            font-size: 1.2rem;
+            color: #cbd5e1;
+            margin-bottom: 2rem;
+        }
+        
+        .waitlist-form {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .waitlist-form input {
+            flex: 1;
+            min-width: 300px;
+            padding: 16px;
+            border: 2px solid rgba(6, 214, 160, 0.3);
+            background: rgba(30, 41, 59, 0.8);
+            color: #e2e8f0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.2s;
+        }
+        
+        .waitlist-form input::placeholder {
+            color: #94a3b8;
+        }
+        
+        .waitlist-form input:focus {
+            outline: none;
+            border-color: #06d6a0;
+        }
+        
+        .waitlist-form button {
+            background: linear-gradient(135deg, #40e0d0, #06d6a0);
+            color: white;
+            padding: 16px 32px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        .waitlist-form button:hover {
+            transform: translateY(-2px);
+        }
+        
+        /* Footer */
+        footer {
+            background: #134e4a;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .waitlist-form {
+                flex-direction: column;
+            }
+            
+            .waitlist-form input {
+                min-width: auto;
+            }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <img src="nullcloak-logo.png" alt="Nullcloak Logo" class="logo"/>
-    <h1>Nullcloak</h1>
-    <p class="slogan">AI Agents. On Demand. At Scale.</p>
-  </header>
+    <header>
+        <nav class="container">
+            <div class="logo">
+                <div class="logo-icon">N</div>
+                Nullcloak
+            </div>
+            <a href="#waitlist" class="cta-button">Join Waitlist</a>
+        </nav>
+    </header>
 
-  <section class="about">
-    <h2>Why Nullcloak?</h2>
-    <p>Nullcloak provides intelligent, autonomous AI agents for business automation, capable of executing real tasks 24/7 — even while you sleep. It's like hiring a tireless workforce, powered by cutting-edge artificial intelligence.</p>
-  </section>
+    <section class="hero">
+        <div class="container">
+            <h1>AI Marketing Agents That Work While You Sleep</h1>
+            <div class="tagline">Your Marketing Team, Automated</div>
+            <p>Deploy intelligent AI agents that handle your marketing tasks autonomously. No coding required, no complex setup - just plug and play marketing automation that delivers results 24/7.</p>
+            <a href="#waitlist" class="hero-cta">Get Early Access</a>
+        </div>
+    </section>
 
-  <section>
-    <h2 style="text-align:center;">Pricing Plans</h2>
-    <div class="pricing">
-      <div class="plan">
-        <h2>Starter</h2>
-        <p>Perfect for individuals or testing</p>
-        <p class="price">$19/month</p>
-      </div>
-      <div class="plan">
-        <h2>Pro</h2>
-        <p>For growing teams and automations</p>
-        <p class="price">$99/month</p>
-      </div>
-      <div class="plan">
-        <h2>Enterprise</h2>
-        <p>Advanced AI and custom support</p>
-        <p class="price">Custom</p>
-      </div>
-    </div>
+    <section class="features">
+        <div class="container">
+            <h2>What Our AI Agents Do</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>📧 Email Marketing</h3>
+                    <p>Create, schedule, and optimize email campaigns that convert. Our agents analyze engagement patterns and automatically adjust messaging for maximum impact.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>📱 Social Media Management</h3>
+                    <p>Generate engaging content, schedule posts across platforms, and respond to comments - all while maintaining your brand voice and style.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>📝 Content Creation</h3>
+                    <p>Produce blog posts, product descriptions, and marketing copy that ranks well and converts visitors into customers.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>📊 Performance Analytics</h3>
+                    <p>Track campaign performance, generate insights, and automatically optimize your marketing strategy based on real data.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🎯 Lead Generation</h3>
+                    <p>Identify potential customers, nurture leads through personalized sequences, and qualify prospects for your sales team.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🚀 Campaign Automation</h3>
+                    <p>Set up complex marketing funnels that run themselves, from initial contact to customer conversion and retention.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <div class="waitlist">
-      <h2>Join Our Waitlist</h2>
-      <p>Be the first to launch with the next-gen AI workforce.</p>
-      <form action="https://formspree.io/f/your-form-id" method="POST">
-        <input type="email" name="email" placeholder="Enter your email" required />
-        <button type="submit">Join Waitlist</button>
-      </form>
-    </div>
-  </section>
+    <section class="pricing">
+        <div class="container">
+            <h2>Simple, Transparent Pricing</h2>
+            <div class="pricing-card">
+                <div class="price">$297</div>
+                <div class="price-period">per month</div>
+                <ul class="pricing-features">
+                    <li>5 AI Marketing Agents</li>
+                    <li>Unlimited campaigns</li>
+                    <li>Advanced analytics dashboard</li>
+                    <li>Email & social media automation</li>
+                    <li>Content generation (50 pieces/month)</li>
+                    <li>Priority support</li>
+                    <li>Custom brand voice training</li>
+                </ul>
+                <a href="#waitlist" class="cta-button">Start Free Trial</a>
+            </div>
+        </div>
+    </section>
 
-  <footer>
-    &copy; 2025 Nullcloak. Built in Pittsburgh. All rights reserved.
-  </footer>
+    <section class="waitlist" id="waitlist">
+        <div class="container">
+            <h2>Join the Waitlist</h2>
+            <p>Be among the first to access AI marketing agents that actually work. Limited spots available for our beta launch.</p>
+            <form class="waitlist-form" action="https://formspree.io/f/xdkowvzp" method="POST">
+                <input type="email" name="email" placeholder="Enter your email address" required>
+                <input type="hidden" name="_to" value="tylerymmy@gmail.com">
+                <input type="hidden" name="_subject" value="New Nullcloak Waitlist Signup">
+                <button type="submit">Join Waitlist</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Nullcloak. All rights reserved. | Revolutionizing business automation with AI.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Form submission feedback
+        const form = document.querySelector('.waitlist-form');
+        form.addEventListener('submit', function(e) {
+            const button = form.querySelector('button');
+            const originalText = button.textContent;
+            button.textContent = 'Joining...';
+            button.disabled = true;
+            
+            // Re-enable after 3 seconds (in case of issues)
+            setTimeout(() => {
+                button.textContent = originalText;
+                button.disabled = false;
+            }, 3000);
+        });
+    </script>
 </body>
 </html>
