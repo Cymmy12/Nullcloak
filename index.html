@@ -20,8 +20,20 @@
       border-bottom: 3px solid #00fff7;
     }
 
+    .logo svg {
+      width: 80px;
+      height: 80px;
+      margin-bottom: 10px;
+      animation: pulse 2s infinite ease-in-out;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.1); opacity: 0.7; }
+    }
+
     h1 {
-      font-size: 3em;
+      font-size: 2.5em;
       color: #00fff7;
       margin-bottom: 10px;
     }
@@ -35,6 +47,32 @@
       max-width: 900px;
       margin: 50px auto;
       padding: 0 20px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #00fff7;
+      margin-bottom: 20px;
+    }
+
+    p {
+      text-align: center;
+      max-width: 750px;
+      margin: 0 auto 30px;
+      color: #ccc;
+      line-height: 1.6em;
+    }
+
+    ul {
+      max-width: 700px;
+      margin: 0 auto;
+      list-style: none;
+      padding-left: 0;
+      color: #ccc;
+    }
+
+    ul li {
+      margin-bottom: 10px;
     }
 
     .pricing {
@@ -103,22 +141,47 @@
 </head>
 <body>
   <header>
+    <div class="logo">
+      <!-- Animated SVG Logo -->
+      <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="45" stroke="#00fff7" stroke-width="5"/>
+        <path d="M30 50 L50 30 L70 50 L50 70 Z" fill="#00fff7"/>
+      </svg>
+    </div>
     <h1>Nullcloak</h1>
     <p class="slogan">AI Agents. On Demand. At Scale.</p>
   </header>
 
   <section>
-    <h2 style="text-align:center;">Pricing Plans</h2>
+    <h2>What is Nullcloak?</h2>
+    <p>
+      Nullcloak is an AI agent marketplace where businesses deploy on-demand AI workers to complete digital tasks like cybersecurity monitoring, sales outreach, data analysis, and more. Our platform gives companies the ability to build a scalable AI workforce—without writing a single line of code.
+    </p>
+  </section>
+
+  <section>
+    <h2>Why Businesses Choose Nullcloak</h2>
+    <ul>
+      <li>✔ Save thousands on staffing by hiring intelligent AI agents</li>
+      <li>✔ Instantly automate repetitive digital workflows</li>
+      <li>✔ Integrate with your stack: Slack, Google, Microsoft, more</li>
+      <li>✔ Zero setup, zero coding, and 24/7 support</li>
+      <li>✔ Built with privacy, speed, and scale in mind</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Pricing Plans</h2>
     <div class="pricing">
       <div class="plan">
         <h2>Starter</h2>
         <p>Perfect for individuals or testing</p>
-        <p class="price">$19/month</p>
+        <p class="price">$29/month</p>
       </div>
       <div class="plan">
         <h2>Pro</h2>
         <p>For growing teams and automations</p>
-        <p class="price">$99/month</p>
+        <p class="price">$149/month</p>
       </div>
       <div class="plan">
         <h2>Enterprise</h2>
@@ -126,15 +189,15 @@
         <p class="price">Custom</p>
       </div>
     </div>
+  </section>
 
-    <div class="waitlist">
-      <h2>Join Our Waitlist</h2>
-      <p>Be the first to launch with the next-gen AI workforce.</p>
-      <form action="https://formspree.io/f/your-form-id" method="POST">
-        <input type="email" name="email" placeholder="Enter your email" required />
-        <button type="submit">Join Waitlist</button>
-      </form>
-    </div>
+  <section class="waitlist">
+    <h2>Join the Waitlist</h2>
+    <p>Be among the first to hire your next AI employee. We’re onboarding early users now.</p>
+    <form action="https://formspree.io/f/your-form-id" method="POST">
+      <input type="email" name="email" placeholder="Enter your email" required />
+      <button type="submit">Join Waitlist</button>
+    </form>
   </section>
 
   <footer>
