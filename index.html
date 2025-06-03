@@ -1,352 +1,861 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nullcloak – AI Agents. On Demand. At Scale.</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet" />
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Orbitron', sans-serif;
-      background-color: #0f172a;
-      color: #e2e8f0;
-      line-height: 1.6;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-
-    header {
-      background: rgba(15, 23, 42, 0.95);
-      backdrop-filter: blur(10px);
-      padding: 1rem 0;
-      box-shadow: 0 2px 20px rgba(6, 214, 160, 0.1);
-      position: fixed;
-      width: 100%;
-      top: 0;
-      z-index: 1000;
-      border-bottom: 1px solid rgba(6, 214, 160, 0.2);
-    }
-
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      font-size: 1.8rem;
-      font-weight: bold;
-      color: #06d6a0;
-    }
-
-    .logo-icon {
-      width: 40px;
-      height: 40px;
-      margin-right: 12px;
-      background: linear-gradient(135deg, #06d6a0, #40e0d0);
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .cta-button {
-      background: linear-gradient(135deg, #f97316, #ea580c);
-      color: white;
-      padding: 12px 24px;
-      border: none;
-      border-radius: 6px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-
-    .cta-button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3);
-    }
-
-    .hero {
-      background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
-      padding: 120px 0 80px;
-      text-align: center;
-    }
-
-    .hero h1 {
-      font-size: 3.5rem;
-      font-weight: 800;
-      color: #06d6a0;
-      margin-bottom: 1rem;
-    }
-
-    .tagline {
-      font-size: 1.3rem;
-      color: #40e0d0;
-      font-weight: 600;
-      margin-bottom: 1.5rem;
-    }
-
-    .hero p {
-      font-size: 1.2rem;
-      color: #cbd5e1;
-      max-width: 600px;
-      margin: 0 auto 2rem;
-    }
-
-    .hero-cta {
-      background: linear-gradient(135deg, #06d6a0, #40e0d0);
-      color: white;
-      padding: 16px 32px;
-      border-radius: 8px;
-      font-size: 1.1rem;
-      font-weight: 600;
-      text-decoration: none;
-      transition: transform 0.2s, box-shadow 0.2s;
-      display: inline-block;
-    }
-
-    .hero-cta:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(6, 214, 160, 0.3);
-    }
-
-    .features {
-      padding: 80px 0;
-      background: #1e293b;
-    }
-
-    .features h2 {
-      text-align: center;
-      font-size: 2.5rem;
-      color: #06d6a0;
-      margin-bottom: 3rem;
-    }
-
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-    }
-
-    .feature-card {
-      background: rgba(30, 41, 59, 0.8);
-      padding: 2rem;
-      border-radius: 12px;
-      border-left: 4px solid #40e0d0;
-    }
-
-    .feature-card h3 {
-      color: #06d6a0;
-      font-size: 1.3rem;
-      margin-bottom: 1rem;
-    }
-
-    .feature-card p {
-      color: #cbd5e1;
-    }
-
-    .pricing {
-      padding: 80px 0;
-      background: #0f172a;
-      text-align: center;
-    }
-
-    .pricing h2 {
-      font-size: 2.5rem;
-      color: #06d6a0;
-      margin-bottom: 1rem;
-    }
-
-    .pricing-card {
-      background: rgba(30, 41, 59, 0.9);
-      max-width: 400px;
-      margin: 2rem auto;
-      padding: 2rem;
-      border-radius: 16px;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-      border: 2px solid rgba(64, 224, 208, 0.3);
-    }
-
-    .price {
-      font-size: 3rem;
-      font-weight: bold;
-      color: #06d6a0;
-      margin-bottom: 0.5rem;
-    }
-
-    .price-period {
-      color: #cbd5e1;
-      margin-bottom: 1.5rem;
-    }
-
-    .pricing-features {
-      list-style: none;
-      margin-bottom: 2rem;
-      padding: 0;
-    }
-
-    .pricing-features li {
-      padding: 0.5rem 0;
-      color: #cbd5e1;
-    }
-
-    .pricing-features li:before {
-      content: "✓ ";
-      color: #40e0d0;
-      font-weight: bold;
-    }
-
-    .waitlist {
-      padding: 80px 0;
-      background: #1e293b;
-      text-align: center;
-    }
-
-    .waitlist h2 {
-      font-size: 2.5rem;
-      color: #06d6a0;
-      margin-bottom: 1rem;
-    }
-
-    .waitlist p {
-      font-size: 1.2rem;
-      color: #cbd5e1;
-      margin-bottom: 2rem;
-    }
-
-    .waitlist-form {
-      max-width: 500px;
-      margin: 0 auto;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      justify-content: center;
-    }
-
-    .waitlist-form input {
-      flex: 1;
-      min-width: 250px;
-      padding: 16px;
-      background: rgba(30, 41, 59, 0.8);
-      border: 2px solid rgba(6, 214, 160, 0.3);
-      border-radius: 8px;
-      color: #e2e8f0;
-      font-size: 1rem;
-    }
-
-    .waitlist-form button {
-      background: linear-gradient(135deg, #40e0d0, #06d6a0);
-      color: white;
-      padding: 16px 32px;
-      border: none;
-      border-radius: 8px;
-      font-size: 1rem;
-      font-weight: 600;
-      cursor: pointer;
-    }
-
-    footer {
-      background: #134e4a;
-      color: white;
-      padding: 2rem 0;
-      text-align: center;
-    }
-
-    @media (max-width: 768px) {
-      .hero h1 {
-        font-size: 2.5rem;
-      }
-
-      .waitlist-form {
-        flex-direction: column;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nullcloak - AI-Powered Construction Management</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #e0e0e0;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background: rgba(20, 20, 20, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(255, 193, 7, 0.1);
+            border-bottom: 1px solid rgba(255, 193, 7, 0.2);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #ffc107, #ff8f00);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(255, 193, 7, 0.3);
+        }
+        
+        .logo-icon::before {
+            content: '⚡';
+            font-size: 1.5rem;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .logo-icon::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+        }
+        
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #ffc107, #ff8f00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #e0e0e0;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: #ffc107;
+        }
+        
+        .cta-button {
+            background: linear-gradient(135deg, #ffc107, #ff8f00);
+            color: #1a1a1a;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 193, 7, 0.4);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: #e0e0e0;
+            padding: 150px 0 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="rgba(255,193,7,0.1)" points="0,1000 1000,800 1000,1000"/></svg>');
+            background-size: cover;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .cta-primary {
+            background: linear-gradient(135deg, #ffc107, #ff8f00);
+            color: #1a1a1a;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .cta-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 193, 7, 0.3);
+        }
+        
+        .cta-secondary {
+            background: transparent;
+            color: #ffc107;
+            padding: 15px 30px;
+            border: 2px solid #ffc107;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .cta-secondary:hover {
+            background: #ffc107;
+            color: #1a1a1a;
+        }
+        
+        /* Stats Section */
+        .stats {
+            background: #2d2d2d;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+        
+        .stat-item {
+            padding: 2rem;
+            border-radius: 15px;
+            background: linear-gradient(135deg, #1a1a1a, #333);
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(255, 193, 7, 0.2);
+        }
+        
+        .stat-item:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 193, 7, 0.4);
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #ffc107;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-size: 1.1rem;
+            color: #b0b0b0;
+            font-weight: 500;
+        }
+        
+        /* Features Section */
+        .features {
+            background: #1a1a1a;
+            padding: 100px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #e0e0e0;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #b0b0b0;
+            margin-bottom: 4rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+        
+        .feature-card {
+            background: #2d2d2d;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(255, 193, 7, 0.1);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(255, 193, 7, 0.2);
+            border-color: rgba(255, 193, 7, 0.3);
+        }
+        
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #ffc107, #ff8f00);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            color: #1a1a1a;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #e0e0e0;
+        }
+        
+        .feature-card p {
+            color: #b0b0b0;
+            line-height: 1.6;
+        }
+        
+        /* Pricing Section */
+        .pricing {
+            background: #2d2d2d;
+            padding: 100px 0;
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+        
+        .pricing-card {
+            background: #1a1a1a;
+            border: 2px solid rgba(255, 193, 7, 0.2);
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(255, 193, 7, 0.2);
+            border-color: rgba(255, 193, 7, 0.4);
+        }
+        
+        .pricing-card.featured {
+            border: 2px solid #ffc107;
+            transform: scale(1.05);
+            background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+        }
+        
+        .pricing-card.featured::before {
+            content: 'Most Popular';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #ffc107, #ff8f00);
+            color: #1a1a1a;
+            padding: 8px 24px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        .pricing-tier {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #e0e0e0;
+            margin-bottom: 1rem;
+        }
+        
+        .pricing-amount {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #ffc107;
+            margin-bottom: 0.5rem;
+        }
+        
+        .pricing-period {
+            color: #b0b0b0;
+            margin-bottom: 2rem;
+        }
+        
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+        
+        .pricing-features li {
+            padding: 0.5rem 0;
+            color: #b0b0b0;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        
+        .pricing-features li::before {
+            content: '✓';
+            color: #ffc107;
+            font-weight: bold;
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: #e0e0e0;
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+        }
+        
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="rgba(255,193,7,0.05)" points="0,0 1000,200 1000,0"/></svg>');
+            background-size: cover;
+        }
+        
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 50px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: #667eea;
+        }
+        
+        .footer-section p, .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            line-height: 1.8;
+        }
+        
+        .footer-section a:hover {
+            color: #667eea;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 2rem;
+            text-align: center;
+            color: #999;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .hero-cta {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .pricing-card.featured {
+                transform: none;
+            }
+        }
+        
+        .demo-form {
+            background: rgba(45, 45, 45, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 20px;
+            margin-top: 2rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            border: 1px solid rgba(255, 193, 7, 0.2);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .demo-form input, .demo-form select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(255, 193, 7, 0.3);
+            border-radius: 10px;
+            font-size: 1rem;
+            background: rgba(26, 26, 26, 0.9);
+            color: #e0e0e0;
+        }
+        
+        .demo-form input::placeholder {
+            color: #888;
+        }
+        
+        .demo-form select {
+            color: #e0e0e0;
+        }
+        
+        .demo-form option {
+            background: #1a1a1a;
+            color: #e0e0e0;
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <nav class="container">
-      <div class="logo">
-        <div class="logo-icon">N</div>
-        Nullcloak
-      </div>
-      <a href="#waitlist" class="cta-button">Join Waitlist</a>
-    </nav>
-  </header>
+    <header>
+        <nav class="container">
+            <div class="logo-container">
+                <div class="logo-icon"></div>
+                <div class="logo">Nullcloak</div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <a href="#demo" class="cta-button">Get Demo</a>
+        </nav>
+    </header>
 
-  <section class="hero">
-    <div class="container">
-      <div class="tagline">AI Agents. On Demand. At Scale.</div>
-      <h1>Nullcloak</h1>
-      <p>Instantly deploy AI agents across your business, powered by cutting-edge large language models. No code, no hassle.</p>
-      <a href="#waitlist" class="hero-cta">Join the Waitlist</a>
-    </div>
-  </section>
-
-  <section class="features">
-    <div class="container">
-      <h2>Why Nullcloak?</h2>
-      <div class="features-grid">
-        <div class="feature-card">
-          <h3>Instant Agent Deployment</h3>
-          <p>Launch intelligent agents in seconds with our no-code platform. Just describe what you need and go.</p>
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Your Project's Brain</h1>
+                <p>Nullcloak nullifies delays, cost overruns, and chaos—before they happen. AI-powered construction management that predicts problems and optimizes every decision.</p>
+                <div class="hero-cta">
+                    <a href="#demo" class="cta-primary">Start Free Trial</a>
+                    <a href="#features" class="cta-secondary">See How It Works</a>
+                </div>
+            </div>
         </div>
-        <div class="feature-card">
-          <h3>Powered by LLMs</h3>
-          <p>We integrate top open-source and proprietary models so you get the smartest agents, tailored to your needs.</p>
+    </section>
+
+    <section class="stats">
+        <div class="container">
+            <h2 class="section-title">The Construction Crisis</h2>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">90%</div>
+                    <div class="stat-label">of projects finish late</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">27%</div>
+                    <div class="stat-label">average cost overrun</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">20+</div>
+                    <div class="stat-label">tools juggled daily</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">$1.6T</div>
+                    <div class="stat-label">lost annually worldwide</div>
+                </div>
+            </div>
         </div>
-        <div class="feature-card">
-          <h3>Affordable Pricing</h3>
-          <p>Scale your operations with transparent, usage-based pricing. From startups to enterprises, we’ve got you covered.</p>
+    </section>
+
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">Cloak the Complexity, Null the Risk</h2>
+            <p class="section-subtitle">Our AI platform integrates every aspect of your construction projects into one intelligent system that thinks ahead.</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Predictive Scheduling</h3>
+                    <p>Analyze weather patterns, supplier delays, and permit processing times to predict real completion dates with 95% accuracy.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Resource Optimization</h3>
+                    <p>Track equipment usage, predict material needs, and optimize crew scheduling to eliminate waste and idle time.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Risk Detection</h3>
+                    <p>Flag potential delays before they happen through weather monitoring, supply chain analysis, and permit tracking.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">💬</div>
+                    <h3>Communication Hub</h3>
+                    <p>Centralize all project communication with smart routing, priority alerts, and automated status updates.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">💰</div>
+                    <h3>Cost Control</h3>
+                    <p>Real-time budget tracking with predictive overrun warnings and automated cost optimization recommendations.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Advanced Analytics</h3>
+                    <p>Deep insights into project performance, team productivity, and predictive modeling for future projects.</p>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="pricing">
-    <div class="container">
-      <h2>Transparent Pricing</h2>
-      <div class="pricing-card">
-        <div class="price">$49</div>
-        <div class="price-period">per month</div>
-        <ul class="pricing-features">
-          <li>10 AI agents included</li>
-          <li>Unlimited messages</li>
-          <li>Priority support</li>
-          <li>Early access to new features</li>
-        </ul>
-        <a href="#waitlist" class="hero-cta">Join Waitlist</a>
-      </div>
-    </div>
-  </section>
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <h2 class="section-title">Choose Your Plan</h2>
+            <p class="section-subtitle">Flexible pricing that scales with your construction volume and project complexity.</p>
+            
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="pricing-tier">Starter</div>
+                    <div class="pricing-amount">$2,000 - $5,000</div>
+                    <div class="pricing-period">per month</div>
+                    <ul class="pricing-features">
+                        <li>Small contractors ($5-25M volume)</li>
+                        <li>Basic predictive scheduling</li>
+                        <li>Resource optimization</li>
+                        <li>Up to 5 active projects</li>
+                        <li>Standard integrations</li>
+                        <li>Email support</li>
+                    </ul>
+                    <a href="#demo" class="cta-button">Start Trial</a>
+                </div>
+                
+                <div class="pricing-card featured">
+                    <div class="pricing-tier">Professional</div>
+                    <div class="pricing-amount">$8,000 - $15,000</div>
+                    <div class="pricing-period">per month</div>
+                    <ul class="pricing-features">
+                        <li>Mid-size companies ($25-100M volume)</li>
+                        <li>Full AI suite with risk detection</li>
+                        <li>Advanced cost control</li>
+                        <li>Up to 25 active projects</li>
+                        <li>Custom integrations</li>
+                        <li>Priority support</li>
+                        <li>Advanced analytics</li>
+                    </ul>
+                    <a href="#demo" class="cta-button">Start Trial</a>
+                </div>
+                
+                <div class="pricing-card">
+                    <div class="pricing-tier">Enterprise</div>
+                    <div class="pricing-amount">$20,000 - $50,000</div>
+                    <div class="pricing-period">per month</div>
+                    <ul class="pricing-features">
+                        <li>Large contractors ($100M+ volume)</li>
+                        <li>Custom AI models</li>
+                        <li>Advanced analytics suite</li>
+                        <li>Unlimited projects</li>
+                        <li>Dedicated success manager</li>
+                        <li>White-glove onboarding</li>
+                        <li>24/7 priority support</li>
+                    </ul>
+                    <a href="#demo" class="cta-button">Contact Sales</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <section id="waitlist" class="waitlist">
-    <div class="container">
-      <h2>Join the Waitlist</h2>
-      <p>Be the first to deploy AI agents at scale. Enter your email below to join our early access list.</p>
-      <form class="waitlist-form">
-        <input type="email" placeholder="Your email address" required />
-        <button type="submit">Join Waitlist</button>
-      </form>
-    </div>
-  </section>
+    <section class="cta-section" id="demo">
+        <div class="container">
+            <h2>Ready to Transform Your Projects?</h2>
+            <p>Join construction leaders who've reduced delays by 60% and cut costs by 25% with Nullcloak.</p>
+            
+            <div class="demo-form">
+                <h3 style="margin-bottom: 1.5rem;">Get Your Free Demo</h3>
+                <form id="demoForm">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Email Address" required>
+                    <input type="text" placeholder="Company Name" required>
+                    <input type="tel" placeholder="Phone Number" required>
+                    <select required>
+                        <option value="">Annual Construction Volume</option>
+                        <option value="5-25M">$5M - $25M</option>
+                        <option value="25-100M">$25M - $100M</option>
+                        <option value="100M+">$100M+</option>
+                    </select>
+                    <button type="submit" class="cta-primary" style="width: 100%; margin-top: 1rem;">Schedule Demo</button>
+                </form>
+            </div>
+        </div>
+    </section>
 
-  <footer>
-    <div class="container">
-      &copy; 2025 Nullcloak. All rights reserved.
-    </div>
-  </footer>
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Nullcloak</h3>
+                    <p>AI-powered construction management that nullifies delays, cost overruns, and chaos before they happen.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Product</h3>
+                    <p><a href="#features">Features</a></p>
+                    <p><a href="#pricing">Pricing</a></p>
+                    <p><a href="#">Integrations</a></p>
+                    <p><a href="#">API</a></p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Company</h3>
+                    <p><a href="#about">About</a></p>
+                    <p><a href="#">Careers</a></p>
+                    <p><a href="#">Press</a></p>
+                    <p><a href="#contact">Contact</a></p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <p><a href="#">Help Center</a></p>
+                    <p><a href="#">Documentation</a></p>
+                    <p><a href="#">Training</a></p>
+                    <p><a href="#">Community</a></p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Nullcloak. All rights reserved. | Privacy Policy | Terms of Service</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission handler
+        document.getElementById('demoForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Simulate form submission
+            const submitButton = this.querySelector('button[type="submit"]');
+            const originalText = submitButton.textContent;
+            
+            submitButton.textContent = 'Scheduling...';
+            submitButton.disabled = true;
+            
+            setTimeout(() => {
+                alert('Thank you! We\'ll contact you within 24 hours to schedule your personalized demo.');
+                this.reset();
+                submitButton.textContent = originalText;
+                submitButton.disabled = false;
+            }, 2000);
+        });
+
+        // Add scroll effect to header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(20, 20, 20, 0.98)';
+            } else {
+                header.style.background = 'rgba(20, 20, 20, 0.95)';
+            }
+        });
+
+        // Animate stats on scroll
+        const observerOptions = {
+            threshold: 0.7,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const statNumbers = entry.target.querySelectorAll('.stat-number');
+                    statNumbers.forEach(stat => {
+                        const finalNumber = stat.textContent;
+                        const isPercentage = finalNumber.includes('%');
+                        const numericValue = parseInt(finalNumber.replace(/[^\d]/g, ''));
+                        
+                        let currentNumber = 0;
+                        const increment = numericValue / 50;
+                        
+                        const countUp = setInterval(() => {
+                            currentNumber += increment;
+                            if (currentNumber >= numericValue) {
+                                stat.textContent = finalNumber;
+                                clearInterval(countUp);
+                            } else {
+                                if (isPercentage) {
+                                    stat.textContent = Math.floor(currentNumber) + '%';
+                                } else if (finalNumber.includes('T')) {
+                                    stat.textContent = '$' + (currentNumber / 1000).toFixed(1) + 'T';
+                                } else if (finalNumber.includes('+')) {
+                                    stat.textContent = Math.floor(currentNumber) + '+';
+                                } else {
+                                    stat.textContent = Math.floor(currentNumber) + '%';
+                                }
+                            }
+                        }, 50);
+                    });
+                }
+            });
+        }, observerOptions);
+
+        const statsSection = document.querySelector('.stats');
+        if (statsSection) {
+            observer.observe(statsSection);
+        }
+    </script>
 </body>
 </html>
